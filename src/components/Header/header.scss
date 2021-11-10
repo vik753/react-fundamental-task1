@@ -1,0 +1,20 @@
+.header {
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border: 1px solid tomato;
+
+    .header__menu {
+      *:not(:first-child) {
+        margin-left: 1rem;
+      }
+
+      .header__name {
+        font-weight: 600;
+      }
+    }
+  }
+}

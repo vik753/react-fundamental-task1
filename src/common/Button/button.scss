@@ -1,0 +1,23 @@
+$btn-color: #333;
+$btn-active-color: #fff;
+$btn-bg-color: #fff;
+$btn-border-color: rebeccapurple;
+
+.btn {
+  color: #333;
+  border: 1px solid $btn-border-color;
+  padding: 0.5rem 1.5rem;
+  min-width: 7rem;
+  background: $btn-bg-color;
+
+  @media (min-width: 768px) {
+    &:hover {
+      background: darken( $btn-bg-color, 10%);
+    }
+
+    &:active {
+      background: darken( $btn-bg-color, 50%);
+      color: $btn-active-color;
+    }
+  }
+}
