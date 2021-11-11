@@ -5,7 +5,7 @@ import './header.scss';
 
 export const Header = () => {
 	return (
-		<div className='header'>
+		<header className='header'>
 			<div className='container'>
 				<Logo styles={{ marginLeft: '1rem' }} />
 				<div className='header__menu'>
@@ -16,6 +16,6 @@ export const Header = () => {
 					/>
 				</div>
 			</div>
-		</div>
+		</header>
 	);
 };

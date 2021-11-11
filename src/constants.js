@@ -1,4 +1,4 @@
-const mockedCoursesList = [
+export const mockedCoursesList = [
 	{
 		id: 'de5aaa59-90f5-4dbc-b8a9-aaf205c551ba',
 		title: 'JavaScript',
@@ -15,7 +15,7 @@ nchanged.`,
 		duration: 160,
 		authors: [
 			'27cc3006-e93a-4748-8ca8-73d06aa93b6d',
-			'f762978b-61eb-4096-812bebde22838167',
+			'f762978b-61eb-4096-812b-ebde22838167',
 		],
 	},
 	{
@@ -36,8 +36,7 @@ specimen book.`,
 	},
 ];
 
-// eslint-disable-next-line no-unused-vars
-const mockedAuthorsList = [
+export const mockedAuthorsList = [
 	{
 		id: '27cc3006-e93a-4748-8ca8-73d06aa93b6d',
 		name: 'Vasiliy Dobkin',

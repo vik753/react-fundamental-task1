@@ -3,7 +3,6 @@
 #local
 .idea
 .husky
-temp.txt
 
 # dependencies
 /node_modules
@@ -26,4 +25,3 @@ temp.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-./temp.txt
