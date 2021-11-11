@@ -1,0 +1,17 @@
+$border-color: lightsalmon;
+$border-color-focus: cornflowerblue;
+
+.input-styles {
+  input {
+    height: 35px;
+    width: 200px;
+    border: 1px solid $border-color;
+    padding: 0.3rem;
+    outline: none;
+
+    &:focus {
+      outline: none;
+      border-color: $border-color-focus;
+    }
+  }
+}

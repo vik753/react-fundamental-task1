@@ -1,6 +1,12 @@
 $main-border-color: lightseagreen;
 
 .courses {
+  margin-top: 1.5rem;
   padding: 1rem;
   border: 1px solid $main-border-color;
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
 }
