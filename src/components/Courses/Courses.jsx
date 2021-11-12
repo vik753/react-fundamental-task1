@@ -5,10 +5,14 @@ import './courses.scss';
 import { Button } from '../../common/Button/Button';
 import { SearchBar } from './components/SearchBar/SearchBar';
 
-export const Courses = () => {
-	const [coursesList, setCoursesList] = useState(mockedCoursesList);
+export const Courses = ({
+	createCourseBtnHandler,
+	coursesState,
+	authorsState,
+}) => {
+	const [coursesList, setCoursesList] = coursesState;
+	const [authorsList, setAuthorsList] = authorsState;
 	const [filteredCoursesList, setfilteredCoursesList] = useState([]);
-	const [authorsList, setAuthorsList] = useState(mockedAuthorsList);
 	const [searchText, setSearchText] = useState('');
 	const [filterShow, setFilterShow] = useState(false);
 
@@ -50,7 +54,7 @@ export const Courses = () => {
 				/>
 				<Button
 					buttonText={'Add new course'}
-					clickHandler={() => console.log('add new course')}
+					clickHandler={createCourseBtnHandler}
 				/>
 			</div>
 			{searchText.length && filterShow

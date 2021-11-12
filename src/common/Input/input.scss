@@ -2,7 +2,7 @@ $border-color: lightsalmon;
 $border-color-focus: cornflowerblue;
 
 .input-styles {
-  input {
+  input, textarea {
     height: 35px;
     width: 200px;
     border: 1px solid $border-color;
@@ -13,5 +13,11 @@ $border-color-focus: cornflowerblue;
       outline: none;
       border-color: $border-color-focus;
     }
+  }
+
+  textarea {
+    width: auto;
+    height: auto;
+    resize: none;
   }
 }

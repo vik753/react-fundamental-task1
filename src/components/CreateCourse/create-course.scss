@@ -1,0 +1,40 @@
+.create-course {
+  border: 1px solid cornflowerblue;
+  padding: 1rem;
+
+  .create-course__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      align-self: flex-end;
+    }
+  }
+
+  .create-course__authors-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    border: 1px solid royalblue;
+    margin-top: 1rem;
+    padding: 1rem;
+    
+    div > h3 {
+      text-align: center;
+    }
+
+    .create-course__add-author-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        align-self: center;
+      }
+    }
+
+    .authors-title {
+      font-size: 1rem;
+    }
+  }
+
+}

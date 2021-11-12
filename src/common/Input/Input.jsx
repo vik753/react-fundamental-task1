@@ -3,21 +3,35 @@ import './input.scss';
 
 export const Input = ({
 	labelText = '',
-	defaultValue = '',
 	placeholderText = '',
 	className,
 	onChange,
 	value = '',
 	labelStyles = {},
 	inputStyles = {},
+	type = 'text',
 }) => {
+	if (type === 'textarea') {
+		return (
+			<label className={`${className} input-styles`} style={labelStyles}>
+				{labelText}
+				<textarea
+					rows='5'
+					cols='33'
+					placeholder={placeholderText}
+					style={inputStyles}
+					onChange={onChange}
+					value={value}
+				/>
+			</label>
+		);
+	}
 	return (
 		<label className={`${className} input-styles`} style={labelStyles}>
 			{labelText}
 			<input
-				type='text'
+				type={type}
 				placeholder={placeholderText}
-				defaultValue={defaultValue}
 				style={inputStyles}
 				onChange={onChange}
 				value={value}
