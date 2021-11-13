@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { CourseCard } from './components/CourseCard/CourseCard';
-import { mockedCoursesList, mockedAuthorsList } from '../../constants';
+import CourseCard from './components/CourseCard/CourseCard';
+import { Button } from '../../common';
+import SearchBar from './components/SearchBar/SearchBar';
 import './courses.scss';
-import { Button } from '../../common/Button/Button';
-import { SearchBar } from './components/SearchBar/SearchBar';
 
-export const Courses = ({
-	createCourseBtnHandler,
-	coursesState,
-	authorsState,
-}) => {
-	const [coursesList, setCoursesList] = coursesState;
-	const [authorsList, setAuthorsList] = authorsState;
+const Courses = ({ createCourseBtnHandler, coursesState, authorsState }) => {
+	const [coursesList] = coursesState;
+	const [authorsList] = authorsState;
 	const [filteredCoursesList, setfilteredCoursesList] = useState([]);
 	const [searchText, setSearchText] = useState('');
 	const [filterShow, setFilterShow] = useState(false);
@@ -63,3 +58,5 @@ export const Courses = ({
 		</div>
 	);
 };
+
+export default Courses;

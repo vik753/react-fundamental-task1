@@ -1,7 +1,5 @@
 import './app.scss';
-import { Header } from './components/Header/Header';
-import { Courses } from './components/Courses/Courses';
-import { CreateCourse } from './components/CreateCourse';
+import { Header, Courses, CreateCourse } from './components';
 import { useState } from 'react';
 import { mockedAuthorsList, mockedCoursesList } from './constants';
 
@@ -20,14 +18,14 @@ function App() {
 				{showCreateCourse ? (
 					<CreateCourse
 						closeSaveCourseHandler={closeSaveCourseHandler}
-						coursesState={[coursesList, setCoursesList]}
+						coursesState={[setCoursesList]}
 						authorsState={[authorsList, setAuthorsList]}
 					/>
 				) : (
 					<Courses
 						createCourseBtnHandler={createCourseBtnHandler}
-						coursesState={[coursesList, setCoursesList]}
-						authorsState={[authorsList, setAuthorsList]}
+						coursesState={[coursesList]}
+						authorsState={[authorsList]}
 					/>
 				)}
 			</main>

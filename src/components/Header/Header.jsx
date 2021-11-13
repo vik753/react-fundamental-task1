@@ -1,9 +1,9 @@
 import React from 'react';
-import { Logo } from './Logo/Logo';
-import { Button } from '../../common/Button/Button';
+import { Logo } from './components';
+import { Button } from '../../common';
 import './header.scss';
 
-export const Header = () => {
+const Header = () => {
 	return (
 		<header className='header'>
 			<div className='container'>
@@ -19,3 +19,5 @@ export const Header = () => {
 		</header>
 	);
 };
+
+export default Header;

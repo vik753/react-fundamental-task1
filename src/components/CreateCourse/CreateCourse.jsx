@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Button } from '../../common/Button/Button';
-import './create-course.scss';
-import { Input } from '../../common/Input/Input';
+import { Input } from '../../common';
+import { Button } from '../../common';
 import { v4 as uuidv4 } from 'uuid';
 import { helpers } from '../../helpers';
-import AddAuthor from './components/AddAuthor/AddAuthor';
+import { AddAuthor } from './components';
+import './create-course.scss';
 
 const CreateCourse = ({
 	closeSaveCourseHandler,
 	coursesState,
 	authorsState,
 }) => {
-	const [coursesList, setCoursesList] = coursesState;
+	const [setCoursesList] = coursesState;
 	const [authorsList, setAuthorsList] = authorsState;
 	const [allAuthors, setAllAuthors] = useState(authorsList);
 	const [choosenAutors, setChoosenAutors] = useState([]);
@@ -64,17 +64,15 @@ const CreateCourse = ({
 
 	const createCourseBtnHandler = () => {
 		let isValid = true;
-		const creationDate = helpers.getCreationDate();
 		const course = {
 			id: uuidv4(),
 			title,
 			description,
-			creationDate,
+			creationDate: helpers.getCreationDate(),
 			duration,
 			authors: choosenAutors.map((author) => author.id),
 		};
 
-		console.log('course:', course);
 		const requiredFields = [];
 		Object.keys(course).forEach((key) => {
 			if (!course[key].length) {

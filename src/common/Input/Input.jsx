@@ -1,7 +1,7 @@
 import React from 'react';
 import './input.scss';
 
-export const Input = ({
+const Input = ({
 	labelText = '',
 	placeholderText = '',
 	className,
@@ -43,3 +43,5 @@ export const Input = ({
 		</label>
 	);
 };
+
+export default Input;

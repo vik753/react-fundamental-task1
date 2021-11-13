@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Input } from '../../../../common/Input/Input';
-import { Button } from '../../../../common/Button/Button';
+import React from 'react';
+import { Input, Button } from '../../../../common';
 import './search-bar.scss';
 
-export const SearchBar = ({ searchState, handleSearchClick }) => {
+const SearchBar = ({ searchState, handleSearchClick }) => {
 	const [searchText, setSearchText] = searchState;
 
 	return (
@@ -23,3 +22,5 @@ export const SearchBar = ({ searchState, handleSearchClick }) => {
 		</div>
 	);
 };
+
+export default SearchBar;

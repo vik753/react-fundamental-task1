@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from '../../../../common/Button/Button';
+import { Button } from '../../../../common';
 import { helpers } from '../../../../helpers';
 import './course-card.scss';
 
-export const CourseCard = ({ course }) => {
+const CourseCard = ({ course }) => {
 	const authors = course.currentAuthors.map((author) => author.name).join(', ');
 
 	const getCreatedDate = (unformedDate) => {
@@ -41,3 +41,5 @@ export const CourseCard = ({ course }) => {
 		</div>
 	);
 };
+
+export default CourseCard;
