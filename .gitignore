@@ -2,7 +2,6 @@
 
 #local
 .idea
-.husky
 
 # dependencies
 /node_modules
