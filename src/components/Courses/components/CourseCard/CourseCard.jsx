@@ -1,24 +1,15 @@
 import React from 'react';
 import { Button } from '../../../../common/Button/Button';
+import { helpers } from '../../../../helpers';
 import './course-card.scss';
 
 export const CourseCard = ({ course }) => {
 	const authors = course.currentAuthors.map((author) => author.name).join(', ');
 
-	const formatToDoubleNumbers = (num) => (num < 10 ? `0${num}` : `${num}`);
-
-	const getDuration = (minutes) => {
-		const hours = Math.floor(+minutes / 60);
-		const mins = +minutes - hours * 60;
-		return `${formatToDoubleNumbers(hours)}:${formatToDoubleNumbers(
-			mins
-		)} hours`;
-	};
-
 	const getCreatedDate = (unformedDate) => {
 		const dateInArr = unformedDate.split('/');
 		const res = dateInArr.map((dateItem, index) => {
-			return index < 2 ? formatToDoubleNumbers(+dateItem) : dateItem;
+			return index < 2 ? helpers.formatToDoubleNumbers(+dateItem) : dateItem;
 		});
 		return res.join('.');
 	};
@@ -36,7 +27,7 @@ export const CourseCard = ({ course }) => {
 				</p>
 				<p>
 					Duration:
-					<span>{getDuration(course.duration)}</span>
+					<span>{helpers.getDuration(course.duration)} hours</span>
 				</p>
 				<p>
 					Created:

@@ -10,6 +10,8 @@ export const Input = ({
 	labelStyles = {},
 	inputStyles = {},
 	type = 'text',
+	min,
+	max,
 }) => {
 	if (type === 'textarea') {
 		return (
@@ -31,6 +33,8 @@ export const Input = ({
 			{labelText}
 			<input
 				type={type}
+				min={min}
+				max={max}
 				placeholder={placeholderText}
 				style={inputStyles}
 				onChange={onChange}

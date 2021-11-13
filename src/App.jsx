@@ -6,12 +6,12 @@ import { useState } from 'react';
 import { mockedAuthorsList, mockedCoursesList } from './constants';
 
 function App() {
-	const [showCreateCourse, setShowCreateCourse] = useState(true);
+	const [showCreateCourse, setShowCreateCourse] = useState(false);
 	const [coursesList, setCoursesList] = useState(mockedCoursesList);
 	const [authorsList, setAuthorsList] = useState(mockedAuthorsList);
 
 	const createCourseBtnHandler = () => setShowCreateCourse(true);
-	const saveCourseBtnHandler = () => setShowCreateCourse(false);
+	const closeSaveCourseHandler = () => setShowCreateCourse(false);
 
 	return (
 		<>
@@ -19,7 +19,7 @@ function App() {
 			<main>
 				{showCreateCourse ? (
 					<CreateCourse
-						saveCourseBtnHandler={saveCourseBtnHandler}
+						closeSaveCourseHandler={closeSaveCourseHandler}
 						coursesState={[coursesList, setCoursesList]}
 						authorsState={[authorsList, setAuthorsList]}
 					/>

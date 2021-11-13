@@ -14,11 +14,12 @@
   .create-course__authors-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-gap: 1rem;
     border: 1px solid royalblue;
     margin-top: 1rem;
     padding: 1rem;
-    
+
     div > h3 {
       text-align: center;
     }
@@ -32,9 +33,16 @@
       }
     }
 
+    .duration-in-hours {
+      font-size: 1.5rem;
+
+      span {
+        font-size: 2rem;
+      }
+    }
+
     .authors-title {
       font-size: 1rem;
     }
   }
-
 }

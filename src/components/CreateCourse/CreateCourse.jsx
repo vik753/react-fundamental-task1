@@ -4,13 +4,21 @@ import './create-course.scss';
 import { Input } from '../../common/Input/Input';
 import { v4 as uuidv4 } from 'uuid';
 import { helpers } from '../../helpers';
+import AddAuthor from './components/AddAuthor/AddAuthor';
 
-const CreateCourse = ({ saveCourseBtnHandler, coursesState, authorsState }) => {
+const CreateCourse = ({
+	closeSaveCourseHandler,
+	coursesState,
+	authorsState,
+}) => {
 	const [coursesList, setCoursesList] = coursesState;
 	const [authorsList, setAuthorsList] = authorsState;
+	const [allAuthors, setAllAuthors] = useState(authorsList);
+	const [choosenAutors, setChoosenAutors] = useState([]);
 	const [title, setTitle] = useState('');
 	const [description, setDescription] = useState('');
 	const [authorName, setAuthorName] = useState('');
+	const [duration, setDuration] = useState('');
 
 	const createAuthorBtnHandler = () => {
 		const authorId = uuidv4();
@@ -28,6 +36,59 @@ const CreateCourse = ({ saveCourseBtnHandler, coursesState, authorsState }) => {
 			name: authorName,
 		};
 		setAuthorsList((prevState) => [...prevState, author]);
+		setAllAuthors((prevState) => [...prevState, author]);
+		setAuthorName('');
+	};
+
+	const chooseAuthorHandler = (author) => {
+		const allNewAuthors = allAuthors.filter((curr) => curr.id !== author.id);
+		setAllAuthors(allNewAuthors);
+		setChoosenAutors((prevState) => [...prevState, author]);
+	};
+
+	const deleteAuthorHandler = (author) => {
+		const chosenNewAuthors = choosenAutors.filter(
+			(curr) => curr.id !== author.id
+		);
+		setChoosenAutors(chosenNewAuthors);
+		setAllAuthors((prevState) => [...prevState, author]);
+	};
+
+	const getDurationInHours = () => {
+		const emptyPlug = '00:00';
+		if (!duration) return emptyPlug;
+		if (+duration < 1) return emptyPlug;
+		const hours = helpers.getDuration(+duration);
+		return `${hours}`;
+	};
+
+	const createCourseBtnHandler = () => {
+		let isValid = true;
+		const creationDate = helpers.getCreationDate();
+		const course = {
+			id: uuidv4(),
+			title,
+			description,
+			creationDate,
+			duration,
+			authors: choosenAutors.map((author) => author.id),
+		};
+
+		console.log('course:', course);
+		const requiredFields = [];
+		Object.keys(course).forEach((key) => {
+			if (!course[key].length) {
+				requiredFields.push(`Field ${key.toUpperCase()} is required!`);
+				isValid = false;
+			}
+		});
+
+		if (!isValid) {
+			alert(requiredFields.join('\n'));
+			return;
+		}
+		setCoursesList((prevState) => [...prevState, course]);
+		closeSaveCourseHandler();
 	};
 
 	return (
@@ -48,7 +109,7 @@ const CreateCourse = ({ saveCourseBtnHandler, coursesState, authorsState }) => {
 				</div>
 				<Button
 					buttonText={'Create course'}
-					clickHandler={saveCourseBtnHandler}
+					clickHandler={createCourseBtnHandler}
 				/>
 			</div>
 			<Input
@@ -84,8 +145,40 @@ const CreateCourse = ({ saveCourseBtnHandler, coursesState, authorsState }) => {
 						styles={{ marginTop: '1rem' }}
 					/>
 				</div>
-				<div className='create-course__author-list-wrapper'>
+				<div>
 					<h3 className='authors-title'>Authors</h3>
+					<AddAuthor
+						allAuthors={allAuthors}
+						authorsHandler={chooseAuthorHandler}
+						buttonText={'Add author'}
+					/>
+				</div>
+				<div className='duration-wrapper'>
+					<h3 className='authors-title'>Duration</h3>
+					<Input
+						type={'number'}
+						min={'1'}
+						labelText={'Duration'}
+						value={duration}
+						onChange={(e) => setDuration(e.target.value)}
+						placeholderText={'Enter duration in minutes...'}
+						labelStyles={{
+							display: 'flex',
+							flexDirection: 'column',
+						}}
+						inputStyles={{ marginTop: '0.3rem', width: '100%' }}
+					/>
+					<p className='duration-in-hours'>
+						Duration: <span>{getDurationInHours()}</span> hours
+					</p>
+				</div>
+				<div>
+					<h3 className='authors-title'>Course authors</h3>
+					<AddAuthor
+						allAuthors={choosenAutors}
+						authorsHandler={deleteAuthorHandler}
+						buttonText={'Delete author'}
+					/>
 				</div>
 			</div>
 		</div>
